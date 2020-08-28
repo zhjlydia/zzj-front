@@ -6,37 +6,15 @@
       <div class="flex">
         <div class="logo">周周酱记事本</div>
         <div class="menu">
-          <el-menu
-            :default-active="activeMenu"
-            background-color="#566f86"
-            text-color="#fff"
-            active-text-color="#feba34"
-            :collapse-transition="false"
-            mode="horizontal"
-            unique-opened
-            menu-trigger="click"
+          <div
+            class="menu-item"
+            v-for="(item,index) in routes"
+            :key="index"
           >
-            <nav-item
-              v-for="route in routes"
-              :key="route.path"
-              :item="route"
-              :base-path="route.path"
-            />
-          </el-menu>
+            <router-link :to="item.path">{{item.title}}</router-link>
+          </div>
         </div>
       </div>
-      <el-dropdown @command="dropdownCommand">
-        <div class="header-user">
-          <span>{{ name }}</span>
-          <img
-            class="head"
-            :src="head"
-          />
-        </div>
-        <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item command="logout">退出</el-dropdown-item>
-        </el-dropdown-menu>
-      </el-dropdown>
     </div>
   </div>
 </template>
@@ -49,28 +27,16 @@ import navItem from '@/layout/components/navbar/nav-item.vue'
 
 @Component({components: {navItem}})
 export default class NavBar extends Vue {
-  @Prop()
-  name: string
-
-  @Prop()
-  head: string
-
-  get routes() {
-    return constantRoutes
-  }
+  routes: any = [
+    {
+      path: '/article/list',
+      title: '博文'
+    }
+  ]
   get activeMenu() {
     const route = this.$route
     const {meta, path} = route
     return path
-  }
-  dropdownCommand(command: string) {
-    switch (command) {
-      case 'logout':
-        this.$emit('logout')
-        break
-      default:
-        this.$emit('logout')
-    }
   }
 }
 </script>
@@ -78,8 +44,7 @@ export default class NavBar extends Vue {
 /** @format */
 
 .navBar {
-  height: 80px;
-  background: #566f86;
+  height: 60px;
   position: fixed;
   left: 0;
   top: 0;
@@ -87,13 +52,14 @@ export default class NavBar extends Vue {
   z-index: 1000;
   padding: 0 200px;
   min-width: 1220px;
+  font-size: 26px;
+  height: 60px;
+
+  line-height: 60px;
+  text-align: center;
+  color: #435c70;
   .logo {
-    height: 80px;
     margin-right: 40px;
-    font-size: 32px;
-    line-height: 90px;
-    text-align: center;
-    color: #fff;
   }
   .bar {
     margin: 0 auto;
@@ -101,15 +67,12 @@ export default class NavBar extends Vue {
     justify-content: space-between;
     align-items: center;
   }
-  .header-user {
-    color: #fff;
-    display: flex;
-    align-items: center;
-    .head {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      margin-left: 20px;
+  .menu-item {
+    height: 60px;
+    line-height: 60px;
+    font-size: 20px;
+    a {
+      color: #435c70;
     }
   }
 }
