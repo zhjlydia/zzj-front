@@ -6,6 +6,7 @@
       class="article-detail"
       v-if="articleDetail"
     >
+    <div class="article-image" :style="{'background-image':'url('+articleDetail.image+')'}"></div>
       <div class="detail-body">
         <div class="article-header">
           <div>
@@ -101,26 +102,50 @@ export default class ArticleDetail extends Vue {
 /** @format */
 
 .article-detail {
+  position: relative;
+  padding-top:300px;
+  background:#fff;
+  .article-image{
+    position: absolute;
+    top:0;
+    left:0;
+    right:0;
+    height: 600px;
+    margin-bottom: 60px;
+    z-index: 1;
+    border-radius: 2px;
+    background-size: cover;
+    -webkit-filter: blur(3px);
+    background-repeat: no-repeat;
+    filter: blur(3px);
+    -webkit-box-shadow: 0 -40px 30px 40px #fff inset;
+    box-shadow: inset 0 -40px 30px 40px #fff;
+  }
   .detail-body {
-    background: #435c70;
+    position:relative;
+    z-index:2;
+    width:1226px;
+    margin:0 auto;
+    border-radius: 20px;
+    overflow: hidden;
     box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
   }
   .article-header {
-    background: #435c70;
-    color: #fff;
-    padding: 50px 30px;
+    background: #fff;
+    color: #333;
+    padding: 30px;
     display: flex;
     justify-content: space-between;
+    border-bottom: 1px dashed #c7c5c5;
     .title {
       font-size: 28px;
       font-weight: 600;
-      text-shadow: 1px 1px #333;
       margin-bottom: 10px;
     }
     .time {
       font-size: 14px;
       padding: 10px;
-      border: 1px dashed #fff;
+      border: 1px dashed #c7c5c5;
       width: 100px;
       line-height: 30px;
       text-align: center;

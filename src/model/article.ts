@@ -8,6 +8,7 @@ class Article {
   id: number
   title: string
   description: string
+  image:string
   content: string
   createdAt: string
   updatedAt?: string
@@ -17,10 +18,11 @@ class Article {
   constructor(data: Article.RawData) {
     this.id = data.id
     this.title = data.title
+    this.image = data.image
     this.description = data.description
     this.content = data.content
-    this.createdAt = dayjs(data.createdAt).format('YYYY-MM-DD HH:mm')
-    this.updatedAt = dayjs(data.updatedAt).format('YYYY-MM-DD HH:mm')
+    this.createdAt = dayjs(data.createdAt).format('YYYY-MM-DD')
+    this.updatedAt = dayjs(data.updatedAt).format('YYYY-MM-DD')
     this.author = new User(data.author)
     this.category = new Category(data.category)
     this.tags = data.tags.map(item => {
@@ -33,6 +35,7 @@ namespace Article {
   export interface RawData {
     id: number
     title: string
+    image: string
     description: string
     content: string
     createdAt: Date

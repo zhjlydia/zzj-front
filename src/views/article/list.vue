@@ -81,8 +81,9 @@ export default class Articles extends Vue {
 /** @format */
 
 .main {
-  padding: 30px;
-  min-height: 400px;
+  max-width: 1126px;
+  padding-top:60px;
+  margin:0 auto;
   .head-bar {
     margin-bottom: 20px;
   }

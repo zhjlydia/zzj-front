@@ -11,8 +11,7 @@ export const constantRoutes : RouteConfig[] = [
     redirect: '/article/list',
     name: 'Article',
     meta: {
-      title: '笔记',
-      icon: 'document'
+      title: '笔记'
     },
     children: [
       {
@@ -34,6 +33,27 @@ export const constantRoutes : RouteConfig[] = [
         // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
         component: () => import (/* webpackChunkName: "articleDetail" */
         '@/views/article/detail.vue')
+      }
+    ]
+  },
+  {
+    path: '/repository',
+    component: Layout,
+    redirect: '/repository/index',
+    name: 'Repository',
+    meta: {
+      title: '仓库'
+    },
+    children: [
+      {
+        path: 'index',
+        name: 'RepositoryIndex',
+        meta: {
+          title: '笔记列表'
+        },
+        // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+        component: () => import (/* webpackChunkName: "repository" */
+        '@/views/repository/index.vue')
       }
     ]
   }

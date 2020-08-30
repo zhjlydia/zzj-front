@@ -26,13 +26,16 @@
           alt=""
         />
         <span class="name">{{ item.author.username }}</span>
-        发布于
         <span class="time">{{ item.createdAt }}</span>
       </div>
-      <div
-        class="category"
-        v-if="item.category"
-      >类别： {{ item.category.title }}</div>
+    </div>
+    <div class="image-wrap">
+      <el-image
+      v-if="item.image"
+      class="image"
+      :src="item.image"
+      fit="cover"></el-image>
+      <div v-else class="image">没有图</div>
     </div>
   </div>
 </template>
@@ -60,14 +63,16 @@ export default class ListItem extends Vue {
 .list-item {
   color: #333;
   font-size: 14px;
-  padding: 30px;
+  padding: 25px;
   background: #fff;
   display: flex;
   justify-content: space-between;
   cursor: pointer;
   border-radius: 10px;
-  border: 1px solid #415a70;
+  box-shadow: 0 6px 15px rgba(36,37,38,0.08);
   margin-bottom: 20px;
+  position:relative;
+  overflow: hidden;
   .title {
     font-size: 16px;
     font-weight: bold;
@@ -82,6 +87,7 @@ export default class ListItem extends Vue {
     margin-bottom: 15px;
   }
   .author {
+    font-size:12px;
     display: flex;
     align-items: center;
     .name {
@@ -94,8 +100,9 @@ export default class ListItem extends Vue {
       border-radius: 50%;
     }
     .time {
-      margin-left: 10px;
+      padding-left: 10px;
       color: #feba34;
+      border-left: 1px solid #feba34;
     }
   }
   .category {
@@ -104,6 +111,20 @@ export default class ListItem extends Vue {
   .button-group {
     display: flex;
     align-items: center;
+  }
+  .image-wrap{
+    position:absolute;
+    top:0;
+    right:0;
+    bottom:0;
+    width:200px;
+    background:rosybrown;
+    
+  }
+  .image{
+    text-align:center;
+    width:100%;
+    height:100%;
   }
 }
 </style>

@@ -19,8 +19,8 @@ export default class App extends Vue {}
 
 body {
   font-family:SourceHanSerifCN-SemiBold,Microsoft YaHei,Source Sans Pro,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif;
-  background: #f3fbfe;
   margin: 0;
   padding: 0;
+  background:url('http://cdn.zhouzhoujiang.com/blog/bg.jpg') repeat;
 }
 </style>
