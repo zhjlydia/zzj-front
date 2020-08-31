@@ -85,7 +85,7 @@ export default class NavBar extends Vue {
       content:'';
       box-sizing: border-box;
       position:absolute;
-      height:10px;
+      height:6px;
       border-top:2px solid #feba34;
       border-bottom:2px solid #feba34;
       left:5px;

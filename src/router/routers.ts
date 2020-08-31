@@ -6,6 +6,16 @@ import {RouteConfig} from 'vue-router'
 /** 固定路由 无权限控制 */
 export const constantRoutes : RouteConfig[] = [
   {
+    path: '/',
+    // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+    component: () => import (/* webpackChunkName: "home" */
+    '@/views/home/index.vue'),
+    name: 'Home',
+    meta: {
+      title: '首页'
+    }
+  },
+  {
     path: '/article',
     component: Layout,
     redirect: '/article/list',

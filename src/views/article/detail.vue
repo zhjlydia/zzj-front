@@ -115,9 +115,9 @@ export default class ArticleDetail extends Vue {
     z-index: 1;
     border-radius: 2px;
     background-size: cover;
-    -webkit-filter: blur(3px);
     background-repeat: no-repeat;
-    filter: blur(3px);
+    background-position: center;
+ 
     -webkit-box-shadow: 0 -40px 30px 40px #fff inset;
     box-shadow: inset 0 -40px 30px 40px #fff;
   }
@@ -138,7 +138,7 @@ export default class ArticleDetail extends Vue {
     justify-content: space-between;
     border-bottom: 1px dashed #c7c5c5;
     .title {
-      font-size: 28px;
+      font-size: 22px;
       font-weight: 600;
       margin-bottom: 10px;
     }

@@ -2,27 +2,7 @@
 
 <template>
   <div>
-    <div class="main">
-      <div class="article-list">
-        <list-item
-          v-for="(item, index) in articles"
-          :key="index"
-          :item="item"
-          @detail="detail"
-        ></list-item>
-      </div>
-      <div class="pagination">
-        <el-pagination
-          hide-on-single-page
-          background
-          layout="prev, pager, next"
-          :total="total"
-          :page-size="size"
-          :current-page="index"
-          @current-change="changePage"
-        >
-        </el-pagination>
-      </div>
+    <div class="banner">
     </div>
   </div>
 </template>
@@ -33,67 +13,26 @@ import {Component, Vue} from 'vue-property-decorator'
 import {namespace, State, Action} from 'vuex-class'
 import {ActionMethod} from 'vuex'
 
-import Article from '@/model/article'
-
-import listItem from './components/list-item.vue'
 import {Loading, Catch} from '@/plugins/decorators'
 
-const article = namespace('article')
+@Component
+export default class Home extends Vue {
 
-@Component({components: {listItem}})
-export default class Articles extends Vue {
-  @article.State
-  articles: Article[]
-
-  @article.State
-  index: number
-
-  @article.State
-  size: number
-
-  @article.State
-  total: number
-
-  @article.Action
-  fetchList: ActionMethod
-
-  async created() {
-    this.fetch(1)
-  }
-
-  changePage(index) {
-    this.fetch(index)
-  }
-
-  @Catch
-  @Loading
-  async fetch(index) {
-    await this.fetchList(index)
-  }
-
-  detail(id: number) {
-    this.$router.push({name: 'ArticleDetail', params: {id: String(id)}})
-  }
+ 
 }
 </script>
 
 <style lang="less" scoped>
 /** @format */
 
-.main {
-  background: #435c70;
-  padding: 30px;
-  min-height: 400px;
-  .head-bar {
-    margin-bottom: 20px;
-  }
-  .article-list {
-    background: #50697f;
-    padding: 0 30px;
-  }
-  .pagination {
-    text-align: right;
-    padding: 20px 0;
-  }
+.banner{
+  width:100%;
+  height: 500px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image:url('http://cdn.zhouzhoujiang.com/blog/home-banner.jpg');
+  border-radius: 0 0 40% 40%; 
+  filter:blur(3px)
 }
 </style>

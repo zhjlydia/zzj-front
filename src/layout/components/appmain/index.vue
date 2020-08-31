@@ -21,6 +21,6 @@ export default class AppMain extends Vue {}
 <style lang="less" scoped>
 /** @format */
 .app-main {
-  padding: 60px 0;
+  padding: 60px 0 0;
 }
 </style>
