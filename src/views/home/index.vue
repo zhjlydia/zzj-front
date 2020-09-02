@@ -1,7 +1,7 @@
 <!-- @format -->
 
 <template>
-  <div>
+  <div class="home">
     <div class="banner">
     </div>
   </div>
@@ -24,15 +24,20 @@ export default class Home extends Vue {
 
 <style lang="less" scoped>
 /** @format */
-
-.banner{
+.home{
   width:100%;
-  height: 500px;
+  overflow:hidden;
+  .banner{
+  width:140%;
+  height: 100vh;
+  position:fixed;
+  left:-20%;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  background-image:url('http://cdn.zhouzhoujiang.com/blog/home-banner.jpg');
-  border-radius: 0 0 40% 40%; 
-  filter:blur(3px)
+  background-image:url('http://cdn.zhouzhoujiang.com/blog/home-banner.jpeg');
+  border-radius: 0 0 50% 50%;
 }
+}
+
 </style>
