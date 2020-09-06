@@ -3,7 +3,7 @@
 <template>
   <div class="navBar">
     <div class="bar">
-        <div class="logo">周周酱记事本</div>
+        <img class="logo" src="http://cdn.zhouzhoujiang.com/blog/logo.png" @click="home" />
         <div class="menu">
           <div
             class="menu-item"
@@ -40,6 +40,11 @@ export default class NavBar extends Vue {
     const {meta, path} = route
     return path
   }
+  home(){
+    this.$router.replace({
+      name:'Home'
+    })
+  }
 }
 </script>
 <style lang="less" scoped>
@@ -63,6 +68,8 @@ export default class NavBar extends Vue {
   box-shadow: 0 1px 5px rgba(0,0,0,.1);
   .logo {
     margin-right: 40px;
+    width:200px;
+    height:auto;
   }
   .bar {
     margin: 0 auto;
@@ -86,8 +93,8 @@ export default class NavBar extends Vue {
       box-sizing: border-box;
       position:absolute;
       height:6px;
-      border-top:2px solid #feba34;
-      border-bottom:2px solid #feba34;
+      border-top:2px solid #42261b;
+      border-bottom:2px solid #42261b;
       left:5px;
       right:5px;
       bottom:0;

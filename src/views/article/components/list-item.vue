@@ -92,7 +92,7 @@ export default class ListItem extends Vue {
     align-items: center;
     .name {
       margin: 0 10px;
-      color: #feba34;
+      color: #989898;
     }
     .head {
       height: 30px;
@@ -101,8 +101,8 @@ export default class ListItem extends Vue {
     }
     .time {
       padding-left: 10px;
-      color: #feba34;
-      border-left: 1px solid #feba34;
+      color: #989898;
+      border-left: 1px solid #989898;
     }
   }
   .category {
