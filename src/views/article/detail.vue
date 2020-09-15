@@ -103,8 +103,8 @@ export default class ArticleDetail extends Vue {
 
 .article-detail {
   position: relative;
-  padding-top:300px;
-  background:#fff;
+  padding-top:200px;
+  background:#F5F5F5;
   .article-image{
     position: absolute;
     top:0;
@@ -117,9 +117,7 @@ export default class ArticleDetail extends Vue {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
- 
-    -webkit-box-shadow: 0 -40px 30px 40px #fff inset;
-    box-shadow: inset 0 -40px 30px 40px #fff;
+    box-shadow: inset 0 -40px 30px 0 #F5F5F5;
   }
   .detail-body {
     position:relative;

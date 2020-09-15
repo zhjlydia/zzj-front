@@ -63,12 +63,12 @@ export default class ListItem extends Vue {
 .list-item {
   color: #333;
   font-size: 14px;
-  padding: 25px;
+  padding: 25px 250px 25px 25px;
   background: #fff;
   display: flex;
   justify-content: space-between;
   cursor: pointer;
-  border-radius: 10px;
+  border-radius: 5px;
   box-shadow: 0 6px 15px rgba(36,37,38,0.08);
   margin-bottom: 20px;
   position:relative;
@@ -76,10 +76,13 @@ export default class ListItem extends Vue {
   .title {
     font-size: 16px;
     font-weight: bold;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    color:#666;
   }
   .description {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    color:#757575;
+    line-height:1.5;
   }
   .tag {
     display: inline-block;
@@ -119,7 +122,6 @@ export default class ListItem extends Vue {
     bottom:0;
     width:200px;
     background:rosybrown;
-    
   }
   .image{
     text-align:center;

@@ -81,7 +81,6 @@ export default class Articles extends Vue {
 /** @format */
 .page{
   background:#f5f5f5;
-  height:100vh;
 }
 .main {
   max-width: 1126px;

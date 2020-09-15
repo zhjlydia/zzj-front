@@ -7,6 +7,7 @@
         <div class="head-wrap">
           <img class="head" src="http://cdn.zhouzhoujiang.com/blog/user-head.jpg" alt="">
           <div class="name">周周酱</div>
+          
         </div>
         <p class="tip">Life isn`t about how to live through the storm, but how to dance in the rain. </p>
         <div class="enter" @click="enter">Discover More</div>
