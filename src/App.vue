@@ -18,7 +18,6 @@ export default class App extends Vue {}
 /** @format */
 
 body {
-  font-family:SourceHanSerifCN-SemiBold,Microsoft YaHei,Source Sans Pro,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif;
   margin: 0;
   padding: 0;
   background:#fff;

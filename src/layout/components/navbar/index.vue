@@ -2,18 +2,13 @@
 
 <template>
   <div class="navBar">
-    <div class="bar">
-        <img class="logo" src="http://cdn.zhouzhoujiang.com/blog/logo.png" @click="home" />
-        <div class="menu">
-          <div
-            class="menu-item"
-            :class="{'active':item.path===activeMenu}"
-            v-for="(item,index) in routes"
-            :key="index"
-          >
-            <router-link :to="item.path">{{item.title}}</router-link>
-          </div>
-        </div>
+    <div class="logo-wrap">
+      <img class="logo" src="http://cdn.zhouzhoujiang.com/blog/logo4.png" @click="home" />
+    </div>
+    <div class="menu">
+      <div class="menu-item" :class="{active: item.path === activeMenu}" v-for="(item, index) in routes" :key="index">
+        <router-link :to="item.path">{{ item.title }}</router-link>
+      </div>
     </div>
   </div>
 </template>
@@ -28,11 +23,11 @@ export default class NavBar extends Vue {
   routes: any = [
     {
       path: '/article/list',
-      title: '博文'
+      title: 'articles'
     },
     {
       path: '/repository/index',
-      title: '仓库'
+      title: 'repositories'
     }
   ]
   get activeMenu() {
@@ -40,9 +35,9 @@ export default class NavBar extends Vue {
     const {meta, path} = route
     return path
   }
-  home(){
+  home() {
     this.$router.replace({
-      name:'Home'
+      name: 'Home'
     })
   }
 }
@@ -51,53 +46,43 @@ export default class NavBar extends Vue {
 /** @format */
 
 .navBar {
-  height: 60px;
-  position: fixed;
-  left: 0;
-  top: 0;
-  right: 0;
-  z-index: 1000;
-  padding: 0 200px;
-  min-width: 1220px;
+  padding: 10px 0 0 0;
   font-size: 26px;
-  height: 60px;
-  background:#fff;
-  line-height: 60px;
+  overflow: hidden;
+  z-index: 10;
+  background: #f5f5f5;
   text-align: center;
   color: #333;
-  box-shadow: 0 1px 5px rgba(0,0,0,.1);
   .logo {
-    margin-right: 40px;
-    width:200px;
-    height:auto;
-  }
-  .bar {
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    width: 300px;
+    height: auto;
+    cursor: pointer;
   }
   .menu-item {
-    height: 60px;
-    line-height: 60px;
+    height: 25px;
+    line-height: 25px;
     font-size: 14px;
     display: inline-block;
-    padding:0 20px;
+    padding: 0 20px;
     vertical-align: top;
-    position:relative;
+    position: relative;
+    font-weight: bold;
     a {
       color: #333;
+      position: relative;
+      z-index: 1;
     }
-    &.active:before{
-      content:'';
+    &.active:before {
+      content: '';
       box-sizing: border-box;
-      position:absolute;
-      height:6px;
-      border-top:2px solid #42261b;
-      border-bottom:2px solid #42261b;
-      left:5px;
-      right:5px;
-      bottom:0;
+      position: absolute;
+      height: 6px;
+      background: #ffe082;
+      left: 5px;
+      right: 5px;
+      bottom: 5px;
+      z-index: 0;
+      border-radius: 3px;
     }
   }
 }

@@ -50,7 +50,7 @@ export namespace Loading {
       func = arg1
     }
     return async function (this: Vue, ...args: any[]) {
-      let instance = ElLoading.service({fullscreen: true, background: 'rgba(0, 0, 0, 0.6)', text: text || '处理中'})
+      let instance = ElLoading.service({fullscreen: true, background: '#fff', text: text || '处理中'})
       try {
         return await func.apply(this, args)
       } finally {

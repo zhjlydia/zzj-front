@@ -1,29 +1,16 @@
 <!-- @format -->
 
 <template>
-  <div class="page">
-    <div class="main">
-      <div class="article-list">
-        <list-item
-          v-for="(item, index) in articles"
-          :key="index"
-          :item="item"
-          @detail="detail"
-        ></list-item>
-      </div>
-      <div class="pagination">
-        <el-pagination
-          hide-on-single-page
-          background
-          layout="prev, pager, next"
-          :total="total"
-          :page-size="size"
-          :current-page="index"
-          @current-change="changePage"
-        >
-        </el-pagination>
+  <div class="article-list main">
+    <div class="list">
+      <div v-for="(item, index) in articles" :key="index">
+        <list-item :item="item" @detail="detail"></list-item>
+        <el-divider v-if="index < articles.length - 1"><i class="el-icon-sunrise"></i></el-divider>
       </div>
     </div>
+    <div class="more" @click="more" v-if="loadListAbled">加载更多</div>
+    <div class="loading" v-if="listLoading"><i class="el-icon-bicycle mar-r-10"></i>加载中...</div>
+    <category-comp :items="categories" :selected="currentCategory" @select="selectCategory"></category-comp>
   </div>
 </template>
 <script lang="ts">
@@ -34,13 +21,17 @@ import {namespace, State, Action} from 'vuex-class'
 import {ActionMethod} from 'vuex'
 
 import Article from '@/model/article'
+import Category from '@/model/category'
 
 import listItem from './components/list-item.vue'
+import categoryComp from './components/category.vue'
+
 import {Loading, Catch} from '@/plugins/decorators'
 
 const article = namespace('article')
+const category = namespace('category')
 
-@Component({components: {listItem}})
+@Component({components: {listItem, categoryComp}})
 export default class Articles extends Vue {
   @article.State
   articles: Article[]
@@ -54,21 +45,41 @@ export default class Articles extends Vue {
   @article.State
   total: number
 
+  @article.State
+  listLoading: boolean
+
+  @article.Getter
+  loadListAbled: boolean
+
   @article.Action
   fetchList: ActionMethod
 
-  async created() {
-    this.fetch(1)
-  }
+  @article.State
+  categories: Category[]
 
-  changePage(index) {
-    this.fetch(index)
-  }
+  @article.State
+  currentCategory: number
+
+  @article.Mutation('M_SET_CURRENTCATEGORY')
+  setCurrentCategory: ActionMethod
+
+  @article.Action
+  fetchCategory: ActionMethod
 
   @Catch
   @Loading
-  async fetch(index) {
-    await this.fetchList(index)
+  async created() {
+    await Promise.all([this.fetchCategory(), this.fetchList(true)])
+  }
+
+  more() {
+    this.fetchList(false)
+  }
+
+  @Catch
+  async selectCategory(categoryId: number) {
+    this.setCurrentCategory(categoryId)
+    await this.fetchList(true)
   }
 
   detail(id: number) {
@@ -78,23 +89,27 @@ export default class Articles extends Vue {
 </script>
 
 <style lang="less" scoped>
-/** @format */
-.page{
-  background:#f5f5f5;
-}
-.main {
-  max-width: 1126px;
-  padding-top:60px;
-  margin:0 auto;
-  .article-list{
-    padding:0 40px;
+.article-list {
+  max-width: 1100px;
+  margin: 0 auto;
+  .list {
+    min-height: 100vh;
+    background: #fff;
+    padding: 30px;
+    box-shadow: 0 2px 13px 0 rgba(0, 0, 0, 0.06);
   }
-  .head-bar {
-    margin-bottom: 20px;
+  .more,
+  .loading {
+    height: 40px;
+    line-height: 40px;
+    width: 300px;
+    background: #ffe082;
+    text-align: center;
+    margin: 10px auto;
+    border-radius: 20px;
   }
-  .pagination {
-    text-align: right;
-    padding: 20px 0;
+  .more {
+    cursor: pointer;
   }
 }
 </style>

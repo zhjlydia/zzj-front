@@ -17,10 +17,10 @@
 .article__content > pre,
 .article__content > table,
 .article__content > blockquote {
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1.5;
   flex-basis: 100%;
-  margin: 0 0 30px 30px;
+  margin: 0 0 20px 0;
   color: #222;
   word-spacing: 0;
   letter-spacing: 0.5px;
@@ -39,7 +39,6 @@
   letter-spacing: normal;
   color: #333;
   line-height: 1.2;
-  font-family: Roboto, sans-serif;
 }
 
 .article__content a {
@@ -62,17 +61,31 @@
 }
 
 .article__content h3 {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   margin: 16px 0;
+  border-bottom: 1px solid #eee;
+  padding: 10px 0;
 }
 
 .article__content h4 {
   font-size: 1.2rem;
   margin: 16px 0;
+  position: relative;
+  padding-left: 8px;
+  &:before {
+    content: '';
+    position: absolute;
+    width: 3px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    background: #435c70;
+    border-radius: 3px;
+  }
 }
 
 .article__content h5 {
-  font-size: 1rem;
+  font-size: 1.1rem;
   margin: 16px 0;
 }
 

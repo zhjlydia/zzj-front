@@ -2,10 +2,7 @@
 
 <template>
   <div class="app-main">
-    <transition
-      name="main"
-      mode="out-in"
-    >
+    <transition name="main" mode="out-in">
       <router-view />
     </transition>
   </div>
@@ -21,6 +18,7 @@ export default class AppMain extends Vue {}
 <style lang="less" scoped>
 /** @format */
 .app-main {
-  padding: 60px 0 0;
+  background: #f5f5f5;
+  padding: 0 0 20px 0;
 }
 </style>

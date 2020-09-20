@@ -3,7 +3,8 @@
 <template>
   <div>
     <nav-bar></nav-bar>
-    <appMain />
+    <app-main />
+    <footer-bar />
   </div>
 </template>
 <script lang="ts">
@@ -14,13 +15,14 @@ import {namespace, State, Action} from 'vuex-class'
 import {ActionMethod} from 'vuex'
 import navBar from '@/layout/components/navbar/index.vue'
 import appMain from '@/layout/components/appmain/index.vue'
+import footerBar from '@/layout/components/footerBar/index.vue'
 import User from '@/model/user'
 
 import {Catch} from '@/plugins/decorators'
 
 const user = namespace('user')
 
-@Component({components: {navBar, appMain}})
+@Component({components: {navBar, appMain, footerBar}})
 export default class LayOut extends Vue {
   @user.State
   user: User

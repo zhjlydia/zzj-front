@@ -2,11 +2,8 @@
 
 <template>
   <div>
-    <div
-      class="article-detail"
-      v-if="articleDetail"
-    >
-    <div class="article-image" :style="{'background-image':'url('+articleDetail.image+')'}"></div>
+    <div class="article-detail" v-if="articleDetail">
+      <div class="article-image" :style="{'background-image': 'url(' + articleDetail.image + ')'}"></div>
       <div class="detail-body">
         <div class="article-header">
           <div>
@@ -16,17 +13,14 @@
               :key="index"
               :color="getColor(item.id)"
               :selected="true"
-            >{{ item.content }}</tag-component>
+              >{{ item.content }}</tag-component
+            >
           </div>
           <div class="time">
             <div>{{ articleDetail.createdAt }}</div>
           </div>
         </div>
-        <div
-          class="content article__content"
-          v-html="articleDetail.content"
-          v-hljs-directive
-        ></div>
+        <div class="content article__content" v-html="articleDetail.content" v-hljs-directive></div>
       </div>
     </div>
   </div>
@@ -103,36 +97,37 @@ export default class ArticleDetail extends Vue {
 
 .article-detail {
   position: relative;
-  padding-top:200px;
-  background:#F5F5F5;
-  .article-image{
+  width: 1100px;
+  padding: 200px 30px 30px 30px;
+  background: #fff;
+  box-shadow: 0 2px 13px 0 rgba(0, 0, 0, 0.06);
+  margin: 0 auto;
+  border-radius: 20px;
+  .article-image {
     position: absolute;
-    top:0;
-    left:0;
-    right:0;
-    height: 600px;
-    margin-bottom: 60px;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 400px;
     z-index: 1;
-    border-radius: 2px;
+    border-radius: 20px 20px 0 0;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    box-shadow: inset 0 -40px 30px 0 #F5F5F5;
   }
   .detail-body {
-    position:relative;
-    z-index:2;
-    width:1226px;
-    margin:0 auto;
+    position: relative;
     border-radius: 20px;
+    z-index: 2;
+    margin: 0 auto;
     overflow: hidden;
-    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+    border: 1px solid #eee;
   }
   .article-header {
-    background: #fff;
     color: #333;
     padding: 30px;
     display: flex;
+    background: #fff;
     justify-content: space-between;
     border-bottom: 1px dashed #c7c5c5;
     .title {
@@ -145,19 +140,16 @@ export default class ArticleDetail extends Vue {
       padding: 10px;
       border: 1px dashed #c7c5c5;
       width: 100px;
-      line-height: 30px;
       text-align: center;
+      font-weight: bold;
+      text-align: center;
+      display: flex;
+      align-items: center;
     }
   }
   .content {
     background: #fff;
     padding: 30px;
-  }
-  .save-btn {
-    float: right;
-    width: 100px;
-    display: block;
-    margin: 30px 0;
   }
 }
 </style>

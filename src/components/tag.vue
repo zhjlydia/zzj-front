@@ -15,25 +15,21 @@ export default class ListItem extends Vue {
   @Prop()
   color: string
 
-  @Prop()
-  selected: boolean
-
   get styles() {
     return {
-      backgroundColor: this.selected ? this.color : 'transparent'
+      backgroundColor: this.color
     }
   }
 }
 </script>
 <style lang="less" scoped>
 .tag {
+  font-size: 12px;
   padding: 0 10px;
-  border-radius: 15px;
-  border-width: 1px;
+  border-radius: 10px;
   margin-right: 5px;
-  height: 30px;
-  line-height: 28px;
-  border: 1px solid #000;
+  height: 20px;
+  line-height: 20px;
   cursor: pointer;
   color: #000;
   display: inline-block;

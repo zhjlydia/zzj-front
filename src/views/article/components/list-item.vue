@@ -1,41 +1,15 @@
 <!-- @format -->
 
 <template>
-  <div
-    class="list-item"
-    @click="detail(item.id)"
-  >
-    <div>
+  <div class="list-item" @click="detail(item.id)">
+    <div class="item-main">
       <p class="title">{{ item.title }}</p>
-      <div
-        class="tag"
-        v-for="(tag, index) in item.tags"
-        :key="index"
-      >
-        <el-tag
-          size="small"
-          type="danger"
-          disable-transitions
-        >{{ tag.content }}</el-tag>
-      </div>
+      <tag v-for="(item, index) in item.tags" :key="index" :color="getColor(index)">{{ item.content }}</tag>
       <div class="description">{{ item.description }}</div>
-      <div class="author flex">
-        <img
-          class="head"
-          :src="item.author.image"
-          alt=""
-        />
-        <span class="name">{{ item.author.username }}</span>
-        <span class="time">{{ item.createdAt }}</span>
-      </div>
+      <div class="time"><i class="el-icon-time mar-r-10"></i>{{ item.createdAt }}</div>
     </div>
     <div class="image-wrap">
-      <el-image
-      v-if="item.image"
-      class="image"
-      :src="item.image"
-      fit="cover"></el-image>
-      <div v-else class="image">没有图</div>
+      <el-image v-if="item.image" class="image" :src="item.image" fit="cover"></el-image>
     </div>
   </div>
 </template>
@@ -43,14 +17,18 @@
 /** @format */
 
 import {Component, Vue, Prop, Emit} from 'vue-property-decorator'
-import {namespace, State, Action} from 'vuex-class'
-import {ActionMethod} from 'vuex'
-const article = namespace('article')
+import {COLOR_ARRAY} from '@/common/constant'
+import Tag from '@/components/tag.vue'
+import Article from '@/model/article'
 
-@Component
+@Component({components: {Tag}})
 export default class ListItem extends Vue {
   @Prop()
-  item: any
+  item: Article
+
+  getColor(index: number) {
+    return COLOR_ARRAY[index % COLOR_ARRAY.length]
+  }
 
   @Emit()
   detail(id) {
@@ -63,70 +41,49 @@ export default class ListItem extends Vue {
 .list-item {
   color: #333;
   font-size: 14px;
-  padding: 25px 250px 25px 25px;
   background: #fff;
   display: flex;
-  justify-content: space-between;
   cursor: pointer;
-  border-radius: 5px;
-  box-shadow: 0 6px 15px rgba(36,37,38,0.08);
-  margin-bottom: 20px;
-  position:relative;
-  overflow: hidden;
+  .item-main {
+    padding: 10px;
+    flex: 1 0;
+  }
   .title {
     font-size: 16px;
     font-weight: bold;
-    margin-bottom: 20px;
-    color:#666;
+    margin-bottom: 15px;
+    color: #666;
   }
   .description {
-    margin-bottom: 20px;
-    color:#757575;
-    line-height:1.5;
+    margin: 15px 0;
+    color: #757575;
+    line-height: 1.5;
+    height: 45px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
   }
-  .tag {
-    display: inline-block;
-    margin-right: 10px;
-    margin-bottom: 15px;
-  }
-  .author {
-    font-size:12px;
-    display: flex;
-    align-items: center;
-    .name {
-      margin: 0 10px;
-      color: #989898;
-    }
-    .head {
-      height: 30px;
-      width: 30px;
-      border-radius: 50%;
-    }
-    .time {
-      padding-left: 10px;
-      color: #989898;
-      border-left: 1px solid #989898;
-    }
+  .time {
+    font-size: 10px;
+    font-weight: bold;
   }
   .category {
     margin-top: 10px;
   }
-  .button-group {
-    display: flex;
-    align-items: center;
+  .image-wrap {
+    flex: 0 0 25%;
+    width: 25%;
+    height: 50%;
+    -webkit-transition: all 0.2s ease-in;
+    transition: all 0.2s ease-in;
+    padding: 10px;
   }
-  .image-wrap{
-    position:absolute;
-    top:0;
-    right:0;
-    bottom:0;
-    width:200px;
-    background:rosybrown;
-  }
-  .image{
-    text-align:center;
-    width:100%;
-    height:100%;
+  .image {
+    text-align: center;
+    border-radius: 10px;
+    width: 100%;
+    height: 100%;
   }
 }
 </style>
