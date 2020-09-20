@@ -32,7 +32,7 @@ import {Component, Vue} from 'vue-property-decorator'
 import {namespace, State, Action} from 'vuex-class'
 import {ActionMethod} from 'vuex'
 
-import 'highlight.js/styles/dark.css'
+import 'highlight.js/styles/ocean.css'
 
 import TagComponent from '@/components/tag.vue'
 
