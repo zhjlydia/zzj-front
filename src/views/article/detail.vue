@@ -17,7 +17,9 @@
             >
           </div>
           <div class="time">
-            <div>{{ articleDetail.createdAt }}</div>
+            <div>
+              {{ articleDetail.createdAt }}
+            </div>
           </div>
         </div>
         <div class="content article__content" v-html="articleDetail.content" v-hljs-directive></div>
@@ -133,7 +135,7 @@ export default class ArticleDetail extends Vue {
     .title {
       font-size: 22px;
       font-weight: 600;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
     }
     .time {
       font-size: 14px;

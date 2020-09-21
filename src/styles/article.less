@@ -2,17 +2,16 @@
 
 .article__content {
   padding: 30px;
-  font-style: normal;
   font-weight: 400;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   color: #333333;
-  font-family: 'Helvetica Neue', Helvetica, 'Lucida Grande', Arial, 'Hiragino Sans GB', sans-serif;
+  font-family: 'Hiragino Sans GB', STXihei, 'Microsoft YaHei', SimSun, sans-serif;
   code,
   pre {
     font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-    border-radius: 5px;
+    border-radius: 10px;
+  }
+  code {
+    padding: 20px;
   }
 }
 
@@ -22,11 +21,11 @@
 .article__content > pre,
 .article__content > table,
 .article__content > blockquote {
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1.5;
   flex-basis: 100%;
   margin: 0 0 20px 0;
-  color: #222;
+  color: #565656;
   word-spacing: 0;
   letter-spacing: 0.5px;
 }
@@ -73,8 +72,8 @@
 }
 
 .article__content h4 {
-  font-size: 1.2rem;
-  margin: 16px 0;
+  font-size: 1rem;
+  margin: 20px 0;
   position: relative;
   padding-left: 8px;
   &:before {
@@ -90,12 +89,12 @@
 }
 
 .article__content h5 {
-  font-size: 1.1rem;
+  font-size: 0.8rem;
   margin: 16px 0;
 }
 
 .article__content h6 {
-  font-size: 1rem;
+  font-size: 0.8rem;
   margin: 16px 0;
 }
 
@@ -110,7 +109,7 @@
 .article__content > blockquote {
   padding: 20px;
   background: #fff;
-  border-radius: 2px;
+  border-radius: 10px;
   border: 1px solid rgb(238, 238, 238);
   border-left: 5px solid #dee3e7;
 }
