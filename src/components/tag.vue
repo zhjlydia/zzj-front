@@ -1,7 +1,10 @@
 <!-- @format -->
 
 <template>
-  <div class="tag" :style="styles">
+  <div
+    class="tag"
+    :style="styles"
+  >
     <slot />
   </div>
 </template>
@@ -23,6 +26,8 @@ export default class ListItem extends Vue {
 }
 </script>
 <style lang="less" scoped>
+/** @format */
+
 .tag {
   font-size: 12px;
   padding: 0 10px;
@@ -33,5 +38,12 @@ export default class ListItem extends Vue {
   cursor: pointer;
   color: #000;
   display: inline-block;
+}
+@media (max-width: 650px) {
+  .tag {
+    height: 12px;
+    line-height: 12px;
+    font-size: 8px;
+  }
 }
 </style>

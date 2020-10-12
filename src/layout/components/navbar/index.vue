@@ -3,10 +3,19 @@
 <template>
   <div class="navBar">
     <div class="logo-wrap">
-      <img class="logo" src="http://cdn.zhouzhoujiang.com/blog/logo4.png" @click="home" />
+      <img
+        class="logo"
+        src="http://cdn.zhouzhoujiang.com/blog/logo4.png"
+        @click="home"
+      />
     </div>
     <div class="menu">
-      <div class="menu-item" :class="{active: item.path === activeMenu}" v-for="(item, index) in routes" :key="index">
+      <div
+        class="menu-item"
+        :class="{active: item.path === activeMenu}"
+        v-for="(item, index) in routes"
+        :key="index"
+      >
         <router-link :to="item.path">{{ item.title }}</router-link>
       </div>
     </div>
@@ -26,8 +35,8 @@ export default class NavBar extends Vue {
       title: 'articles'
     },
     {
-      path: '/repository/index',
-      title: 'repositories'
+      path: '/project/index',
+      title: 'projects'
     }
   ]
   get activeMenu() {

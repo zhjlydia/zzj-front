@@ -5,16 +5,26 @@
     <div class="banner">
       <div class="user-info">
         <div class="head-wrap">
-          <img class="head" src="http://cdn.zhouzhoujiang.com/blog/user-head.jpg" alt="" />
+          <img
+            class="head"
+            src="http://cdn.zhouzhoujiang.com/blog/user-head.jpg"
+            alt=""
+          />
           <div class="name">周周酱</div>
         </div>
         <p class="tip">Life isn`t about how to live through the storm, but how to dance in the rain.</p>
-        <div class="enter" @click="enter">Discover More</div>
+        <div
+          class="enter"
+          @click="enter"
+        >Discover More</div>
       </div>
     </div>
     <p class="module-title">Recent Articles</p>
     <div class="article">
-      <articles :items="articles" @detail="detail"></articles>
+      <articles
+        :items="articles"
+        @detail="detail"
+      ></articles>
     </div>
     <footer-bar />
   </div>
@@ -69,9 +79,8 @@ export default class Home extends Vue {
     background-position: center;
     background-repeat: repeat;
     background-attachment: fixed;
-    background-image: url('http://cdn.zhouzhoujiang.com/blog/bg.jpg');
+    background-image: url('http://cdn.zhouzhoujiang.com/blog/bgg.png');
     border-radius: 0 0 50% 50%;
-    filter: contrast(90%);
     box-shadow: 0 2px 13px 0 rgba(0, 0, 0, 0.06);
   }
   .user-info {
@@ -116,7 +125,7 @@ export default class Home extends Vue {
       font-weight: bold;
       padding: 20px 0;
       font-size: 20px;
-      margin-top: 20px;
+      margin: 20px auto 0 auto;
     }
   }
   .enter {
@@ -148,6 +157,20 @@ export default class Home extends Vue {
   .article {
     max-width: 1200px;
     margin: 0 auto 50px auto;
+  }
+}
+@media (max-width: 650px) {
+  .home {
+    .banner {
+      box-shadow: none;
+      border-radius: 0;
+    }
+    .user-info {
+      width: 100%;
+      .tip {
+        width: 80%;
+      }
+    }
   }
 }
 </style>

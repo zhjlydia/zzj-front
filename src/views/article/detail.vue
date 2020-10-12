@@ -2,8 +2,14 @@
 
 <template>
   <div>
-    <div class="article-detail" v-if="articleDetail">
-      <div class="article-image" :style="{'background-image': 'url(' + articleDetail.image + ')'}"></div>
+    <div
+      class="article-detail"
+      v-if="articleDetail"
+    >
+      <div
+        class="article-image"
+        :style="{'background-image': 'url(' + articleDetail.image + ')'}"
+      ></div>
       <div class="detail-body">
         <div class="article-header">
           <div>
@@ -13,8 +19,7 @@
               :key="index"
               :color="getColor(item.id)"
               :selected="true"
-              >{{ item.content }}</tag-component
-            >
+            >{{ item.content }}</tag-component>
           </div>
           <div class="time">
             <div>
@@ -22,7 +27,11 @@
             </div>
           </div>
         </div>
-        <div class="content article__content" v-html="articleDetail.content" v-hljs-directive></div>
+        <div
+          class="content article__content"
+          v-html="articleDetail.content"
+          v-hljs-directive
+        ></div>
       </div>
     </div>
   </div>
@@ -152,6 +161,15 @@ export default class ArticleDetail extends Vue {
   .content {
     background: #fff;
     padding: 30px;
+  }
+}
+@media (max-width: 650px) {
+  .article-detail {
+    width: 100%;
+    padding: 150px 0 0 0;
+    .article-image {
+      height: 150px;
+    }
   }
 }
 </style>

@@ -45,22 +45,22 @@ export const constantRoutes: RouteConfig[] = [
     ]
   },
   {
-    path: '/repository',
+    path: '/project',
     component: Layout,
-    redirect: '/repository/index',
-    name: 'Repository',
+    redirect: '/project/index',
+    name: 'Project',
     meta: {
       title: '仓库'
     },
     children: [
       {
         path: 'index',
-        name: 'RepositoryIndex',
+        name: 'ProjectIndex',
         meta: {
           title: '笔记列表'
         },
         // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-        component: () => import(/* webpackChunkName: "repository" */ '@/views/repository/index.vue')
+        component: () => import(/* webpackChunkName: "project" */ '@/views/project/index.vue')
       }
     ]
   }

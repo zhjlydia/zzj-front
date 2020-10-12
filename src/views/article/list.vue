@@ -3,14 +3,31 @@
 <template>
   <div class="article-list main">
     <div class="list">
-      <div v-for="(item, index) in articles" :key="index">
-        <list-item :item="item" @detail="detail"></list-item>
+      <div
+        v-for="(item, index) in articles"
+        :key="index"
+      >
+        <list-item
+          :item="item"
+          @detail="detail"
+        ></list-item>
         <el-divider v-if="index < articles.length - 1"><i class="el-icon-sunrise"></i></el-divider>
       </div>
     </div>
-    <div class="more" @click="more" v-if="loadListAbled">加载更多</div>
-    <div class="loading" v-if="listLoading"><i class="el-icon-bicycle mar-r-10"></i>加载中...</div>
-    <category-comp :items="categories" :selected="currentCategory" @select="selectCategory"></category-comp>
+    <div
+      class="more"
+      @click="more"
+      v-if="loadListAbled"
+    >加载更多</div>
+    <div
+      class="loading"
+      v-if="listLoading"
+    ><i class="el-icon-bicycle mar-r-10"></i>加载中...</div>
+    <category-comp
+      :items="categories"
+      :selected="currentCategory"
+      @select="selectCategory"
+    ></category-comp>
   </div>
 </template>
 <script lang="ts">
@@ -89,6 +106,8 @@ export default class Articles extends Vue {
 </script>
 
 <style lang="less" scoped>
+/** @format */
+
 .article-list {
   max-width: 1100px;
   margin: 0 auto;
@@ -110,6 +129,13 @@ export default class Articles extends Vue {
   }
   .more {
     cursor: pointer;
+  }
+}
+@media (max-width: 650px) {
+  .article-list {
+    .list {
+      padding: 20px;
+    }
   }
 }
 </style>

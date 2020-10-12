@@ -2,14 +2,28 @@
 
 <template>
   <div class="home-article clearfix">
-    <div class="home-article-item-wrap" v-for="(item, index) in items" :key="index" @click="detail(item.id)">
+    <div
+      class="home-article-item-wrap"
+      v-for="(item, index) in items"
+      :key="index"
+      @click="detail(item.id)"
+    >
       <div class="home-article-item">
         <div class="image-wrap">
-          <el-image v-if="item.image" class="image" :src="item.image" fit="cover"></el-image>
+          <el-image
+            v-if="item.image"
+            class="image"
+            :src="item.image"
+            fit="cover"
+          ></el-image>
         </div>
         <div class="item-main">
           <p class="title">{{ item.title }}</p>
-          <tag v-for="(item, index) in item.tags" :key="index" :color="getColor(index)">{{ item.content }}</tag>
+          <tag
+            v-for="(item, index) in item.tags"
+            :key="index"
+            :color="getColor(index)"
+          >{{ item.content }}</tag>
           <div class="description">{{ item.description }}</div>
           <div class="time"><i class="el-icon-time mar-r-10"></i>{{ item.createdAt }}</div>
         </div>
@@ -108,6 +122,22 @@ export default class ListItem extends Vue {
     }
     .category {
       margin-top: 10px;
+    }
+  }
+}
+@media (max-width: 650px) {
+  .home-article {
+    .home-article-item-wrap {
+      padding: 20px 20px 0 20px;
+      width: 100%;
+    }
+    .home-article-item {
+      padding: 0;
+      border-radius: 10px;
+      .item-main {
+        width: 100%;
+        border-radius: 0 0 10px 10px;
+      }
     }
   }
 }

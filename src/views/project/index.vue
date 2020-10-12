@@ -1,7 +1,7 @@
 <!-- @format -->
 
 <template>
-  <div>仓库</div>
+  <div>项目</div>
 </template>
 <script lang="ts">
 /** @format */
@@ -11,14 +11,14 @@ import {namespace, State, Action} from 'vuex-class'
 import {ActionMethod} from 'vuex'
 
 import {Loading, Catch} from '@/plugins/decorators'
-const repository = namespace('repository')
+const project = namespace('project')
 
 @Component
-export default class Repository extends Vue {
-  @repository.State
+export default class Project extends Vue {
+  @project.State
   repositories: any
 
-  @repository.Action
+  @project.Action
   fetch: ActionMethod
 
   async created() {
