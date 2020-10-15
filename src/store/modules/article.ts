@@ -100,20 +100,21 @@ export const actions: ActionTree<State, Root> = {
       commit('M_SET_List_Loading', false)
     }
   },
-  async fetchDetail({state, commit}) {
+  async fetchDetail({state, commit, dispatch}) {
     if (!state.id) {
       return
     }
     const res: Article.RawData = await http.get(`article/${state.id}`)
     let articleDetail: Article = new Article(res)
     commit('M_SET_ARTICLE_DETAIL', articleDetail)
+    dispatch('log')
   },
   async resetArticleDetail({commit}) {
     commit('M_SET_ARTICLE_DETAIL', null)
   },
   async fetchCategory({commit}) {
     const defaultCategory: Category[] = [{id: -1, title: '全部'}]
-    const res: Category.RawData[] = await http.get('category/all')
+    const res: Category.RawData[] = await http.get('category/all',{ params: {module:'article'} })
     let categories: Category[] = res
       ? defaultCategory.concat(
           res.map((item: Category.RawData) => {
@@ -122,6 +123,12 @@ export const actions: ActionTree<State, Root> = {
         )
       : defaultCategory
     commit('M_SET_CATEGORIES', categories)
+  },
+  async log({state, commit}) {
+    if (!state.id) {
+      return
+    }
+    await http.post(`log`,{targetId:state.id,module:'article'})
   }
 }
 
