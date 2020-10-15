@@ -136,6 +136,12 @@ export default class Articles extends Vue {
     .list {
       padding: 20px;
     }
+    .more,
+    .loading {
+      width: 60%;
+      height: 30px;
+      line-height: 30px;
+    }
   }
 }
 </style>

@@ -168,7 +168,20 @@ export default class ArticleDetail extends Vue {
     width: 100%;
     padding: 150px 0 0 0;
     .article-image {
-      height: 150px;
+      height: 200px;
+      border-radius: 0;
+    }
+    .article-header {
+      padding: 20px;
+      .title {
+        font-size: 16px;
+      }
+      .time {
+        border: none;
+        font-size: 12px;
+        width: auto;
+        padding: 0;
+      }
     }
   }
 }

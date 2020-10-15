@@ -2,13 +2,11 @@
 
 <template>
   <div class="navBar">
-    <div class="logo-wrap">
-      <img
-        class="logo"
-        src="http://cdn.zhouzhoujiang.com/blog/logo4.png"
-        @click="home"
-      />
-    </div>
+    <img
+      class="logo"
+      src="http://cdn.zhouzhoujiang.com/blog/logo4.png"
+      @click="home"
+    />
     <div class="menu">
       <div
         class="menu-item"
@@ -19,6 +17,27 @@
         <router-link :to="item.path">{{ item.title }}</router-link>
       </div>
     </div>
+    <div
+      class="menu-mobile-icon"
+      @click="drawer=true"
+    >
+      <span class="middle"></span>
+    </div>
+    <el-drawer
+      :visible.sync="drawer"
+      direction="rtl"
+    >
+      <div class="menu-mobile">
+        <div
+          class="menu-item"
+          :class="{active: item.path === activeMenu}"
+          v-for="(item, index) in routes"
+          :key="index"
+        >
+          <router-link :to="item.path">{{ item.title }}</router-link>
+        </div>
+      </div>
+    </el-drawer>
   </div>
 </template>
 <script lang="ts">
@@ -39,6 +58,7 @@ export default class NavBar extends Vue {
       title: 'projects'
     }
   ]
+  drawer: boolean = false
   get activeMenu() {
     const route = this.$route
     const {meta, path} = route
@@ -67,6 +87,34 @@ export default class NavBar extends Vue {
     height: auto;
     cursor: pointer;
   }
+  .menu-mobile-icon {
+    display: none;
+    position: relative;
+    width: 20px;
+    height: 16px;
+    .middle,
+    &::before,
+    &::after {
+      position: absolute;
+      width: 20px;
+      height: 2px;
+      left: 0;
+      background: #313131;
+      border-radius: 2px;
+    }
+    .middle {
+      top: 50%;
+      margin-top: -1px;
+    }
+    &:before {
+      content: '';
+      top: 0;
+    }
+    &:after {
+      content: '';
+      bottom: 0;
+    }
+  }
   .menu-item {
     height: 25px;
     line-height: 25px;
@@ -92,6 +140,24 @@ export default class NavBar extends Vue {
       bottom: 5px;
       z-index: 0;
       border-radius: 3px;
+    }
+  }
+}
+@media (max-width: 650px) {
+  .navBar {
+    padding: 0 20px;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .menu-mobile-icon {
+      display: block;
+    }
+    .menu {
+      display: none;
+    }
+    .logo {
+      width: 150px;
     }
   }
 }

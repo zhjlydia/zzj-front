@@ -31,7 +31,7 @@ module.exports = merge(baseConfig, {
   devServer: {
     proxy: {
       '/api': {
-        target: 'http://localhost:3001',
+        target: 'http://api.zhouzhoujiang.com',
         pathRewrite: {
           '^/api': ''
         },

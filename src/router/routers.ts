@@ -31,18 +31,18 @@ export const constantRoutes: RouteConfig[] = [
         },
         // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
         component: () => import(/* webpackChunkName: "articleList" */ '@/views/article/list.vue')
-      },
-      {
-        path: 'detail',
-        name: 'ArticleDetail',
-        meta: {
-          hidden: true,
-          title: '笔记详情'
-        },
-        // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-        component: () => import(/* webpackChunkName: "articleDetail" */ '@/views/article/detail.vue')
       }
     ]
+  },
+  {
+    path: '/article/detail',
+    name: 'ArticleDetail',
+    meta: {
+      hidden: true,
+      title: '笔记详情'
+    },
+    // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+    component: () => import(/* webpackChunkName: "articleDetail" */ '@/views/article/detail.vue')
   },
   {
     path: '/project',
@@ -60,7 +60,7 @@ export const constantRoutes: RouteConfig[] = [
           title: '笔记列表'
         },
         // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-        component: () => import(/* webpackChunkName: "project" */ '@/views/project/index.vue')
+        component: () => import(/* webpackChunkName: "repository" */ '@/views/project/index.vue')
       }
     ]
   }

@@ -17,6 +17,8 @@ import {Component, Vue, Prop} from 'vue-property-decorator'
 export default class FooterBar extends Vue {}
 </script>
 <style lang="less" scoped>
+/** @format */
+
 .copyright {
   text-align: center;
   font-size: 16px;
@@ -25,6 +27,12 @@ export default class FooterBar extends Vue {}
   box-shadow: 0 2px 13px 0 rgba(0, 0, 0, 0.06);
   .record {
     margin-top: 10px;
+  }
+}
+@media (max-width: 650px) {
+  .copyright {
+    font-size: 12px;
+    padding: 10px 0;
   }
 }
 </style>
