@@ -94,6 +94,7 @@ export default class Articles extends Vue {
   }
 
   @Catch
+  @Loading
   async selectCategory(categoryId: number) {
     this.setCurrentCategory(categoryId)
     await this.fetchList(true)
@@ -111,8 +112,9 @@ export default class Articles extends Vue {
 .article-list {
   max-width: 1100px;
   margin: 0 auto;
+  min-height: 100vh;
   .list {
-    min-height: 100vh;
+    min-height: 300px;
     background: #fff;
     padding: 30px;
     box-shadow: 0 2px 13px 0 rgba(0, 0, 0, 0.06);
