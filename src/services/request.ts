@@ -1,7 +1,6 @@
 /** @format */
 
 import axios from 'axios'
-import {getToken} from '@/plugins/cookies'
 
 const http = axios.create({
   baseURL: 'api/'
@@ -9,7 +8,6 @@ const http = axios.create({
 
 http.interceptors.request.use(
   config => {
-    const token = getToken()
     return config
   },
   error => {

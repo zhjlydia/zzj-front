@@ -102,7 +102,6 @@ export default class ListItem extends Vue {
   .list-item {
     align-items: center;
     .title {
-      font-size: 14px;
       margin-bottom: 10px;
     }
     .image-wrap {
@@ -110,8 +109,6 @@ export default class ListItem extends Vue {
     }
     .description {
       margin: 10px 0;
-      font-size: 12px;
-      height: 35px;
     }
   }
 }

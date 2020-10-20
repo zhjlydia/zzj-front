@@ -16,4 +16,4 @@ RUN npm run build
 FROM nginx:alpine
 LABEL maintainer="zzj <zhjlydia@foxmail.com>"
 COPY --from=compiler /var/app/dist /var/www/html
-COPY *.conf /etc/nginx/
+COPY proxy.conf /etc/nginx/

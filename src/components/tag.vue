@@ -41,9 +41,9 @@ export default class ListItem extends Vue {
 }
 @media (max-width: 650px) {
   .tag {
-    height: 12px;
-    line-height: 12px;
-    font-size: 8px;
+    height: 16px;
+    line-height: 16px;
+    font-size: 10px;
   }
 }
 </style>
