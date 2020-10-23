@@ -1,7 +1,7 @@
 <!-- @format -->
 
 <template>
-  <div id="app">
+  <div id="app" data-server-rendered="true">
     <router-view />
   </div>
 </template>
@@ -11,7 +11,7 @@
 
 import {Component, Vue} from 'vue-property-decorator'
 
-@Component({})
+@Component
 export default class App extends Vue {}
 </script>
 <style lang="less">

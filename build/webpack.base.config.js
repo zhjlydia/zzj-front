@@ -57,6 +57,14 @@ module.exports = {
             loader: 'url-loader'
           }
         ]
+      },
+      {
+        test: /\.less$/,
+        use: ['vue-style-loader', 'css-loader', 'less-loader', 'postcss-loader']
+      },
+      {
+        test: /\.css$/,
+        use: ['vue-style-loader', 'css-loader', 'postcss-loader']
       }
     ]
   },

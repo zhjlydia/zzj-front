@@ -34,25 +34,25 @@
 
 import {Component, Vue} from 'vue-property-decorator'
 import {namespace, State, Action} from 'vuex-class'
-import {ActionMethod} from 'vuex'
-const home = namespace('home')
+import {ActionMethod,mapState} from 'vuex'
 import Article from '@/model/article'
 import articles from './components/articles.vue'
 import footerBar from '@/layout/components/footerBar/index.vue'
 import {Loading, Catch} from '@/plugins/decorators'
 
+import * as home from '@/store/modules/home'
+
 @Component({components: {articles, footerBar}})
 export default class Home extends Vue {
-  @home.State
-  articles: Article[]
-
-  @home.Action
-  fetchList: ActionMethod
+  get articles(){
+    return this.$store.state.home.articles;
+  }
 
   @Catch
   @Loading
-  created() {
-    this.fetchList()
+  asyncData ({ store, route }) {
+    store.registerModule('home', home)
+    return store.dispatch('home/fetchList')
   }
 
   enter() {
@@ -62,6 +62,9 @@ export default class Home extends Vue {
   }
   detail(id: number) {
     this.$router.push({name: 'ArticleDetail', params: {id: String(id)}})
+  }
+  destroyed () {
+    this.$store.unregisterModule('home')
   }
 }
 </script>

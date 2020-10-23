@@ -2,8 +2,9 @@
 
 import Vue from 'vue'
 import App from './App.vue'
-import router from '@/router'
-import store from '@/store'
+import { createRouter } from './router'
+import { createStore } from '@/store'
+import { sync } from 'vuex-router-sync'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import '@/styles/index.less'
@@ -18,8 +19,15 @@ Object.keys(directives).forEach(key => {
   Vue.directive(key, (directives as {[key: string]: DirectiveOptions})[key])
 })
 
-new Vue({
-  store,
-  router,
-  render: h => h(App)
-}).$mount('#app')
+export function createApp () {
+  const router = createRouter()
+  const store = createStore()
+  sync(store, router)
+
+  const app = new Vue({
+    router,
+    store,
+    render: h => h(App)
+  })
+  return { app, router, store }
+}

@@ -2,9 +2,6 @@
 
 import Vue from 'vue'
 import Vuex, {GetterTree, MutationTree, Store, ActionTree} from 'vuex'
-import * as article from './modules/article'
-import * as home from './modules/home'
-import * as project from './modules/project'
 
 Vue.use(Vuex)
 
@@ -34,10 +31,11 @@ const mutations: MutationTree<State> = {
 
 const actions: ActionTree<State, State> = {}
 
-export default new Store({
-  state,
-  mutations,
-  actions,
-  getters,
-  modules: {home, article, project}
-})
+export function createStore(){
+  return new Store({
+    state,
+    mutations,
+    actions,
+    getters
+  })
+} 
