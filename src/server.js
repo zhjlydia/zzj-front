@@ -1,5 +1,3 @@
-const Vue = require('vue')
-  
 const fs = require('fs')
 const path = require('path')
 const express = require('express')
@@ -10,29 +8,19 @@ const serverBundle = require(resolve('./dist/vue-ssr-server-bundle.json'))
 const clientManifest = require(resolve('./dist/vue-ssr-client-manifest.json'))
 
 const renderer = require('vue-server-renderer').createRenderer(serverBundle,{
+    runInNewContext: false, // 推荐
     template,
     clientManifest
 });
 
 const app = express()
 
-server.get('*', (req, res) => {
-    const app = new Vue({
-      data: {
-        url: req.url
-      },
-      template: `<div>访问的 URL 是： {{ url }}</div>`,
-    });
-  
-    renderer
-    .renderToString(app, context, (err, html) => {
-      console.log(html);
-      if (err) {
-        res.status(500).end('Internal Server Error')
-        return;
-      }
-      res.end(html);
-    });
+app.get('*', (req, res) => {
+  const context = { url: req.url }
+  renderer.renderToString(context, (err, html) => {
+    // 处理异常……
+    res.end(html)
   })
+})
   
-  server.listen(8080);
+app.listen(8080);

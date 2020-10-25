@@ -78,7 +78,6 @@ module.exports = {
   },
   plugins: [
     new VueLoaderPlugin(),
-    new HtmlWebpackPlugin({filename: 'index.html', template: resolve('public/index.html')}),
     new FriendlyErrorsWebpackPlugin()
   ]
 }

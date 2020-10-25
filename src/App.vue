@@ -1,7 +1,7 @@
 <!-- @format -->
 
 <template>
-  <div id="app" data-server-rendered="true">
+  <div id="app">
     <router-view />
   </div>
 </template>
