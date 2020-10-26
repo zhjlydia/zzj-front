@@ -21,16 +21,5 @@ module.exports = merge(baseConfig, {
       filename:'index.html',
       template:resolve('public/index.html')
     })
-  ],
-  optimization: {
-    splitChunks: {
-        cacheGroups: {
-            commons: {
-                name: "manifest",
-                chunks: "initial",
-                minChunks: 2
-            }
-        }
-    }
-  }
+  ]
 })

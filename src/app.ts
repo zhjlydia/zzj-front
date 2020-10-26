@@ -22,7 +22,6 @@ Object.keys(directives).forEach(key => {
 export function createApp () {
   const router = createRouter()
   const store = createStore()
-  sync(store, router)
 
   const app = new Vue({
     router,

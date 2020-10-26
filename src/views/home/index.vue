@@ -45,12 +45,13 @@ import * as home from '@/store/modules/home'
 @Component({components: {articles, footerBar}})
 export default class Home extends Vue {
   get articles(){
-    return this.$store.state.home.articles;
+    return this.$store.state.home && this.$store.state.home.articles;
   }
 
   @Catch
   @Loading
   asyncData ({ store, route }) {
+    console.log()
     store.registerModule('home', home)
     return store.dispatch('home/fetchList')
   }
