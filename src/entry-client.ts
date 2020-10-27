@@ -21,6 +21,9 @@ router.onReady(() => {
       const activated = matched.filter((c, i) => {
         return diffed || (diffed = (prevMatched[i] !== c))
       })
+      console.log(to, from)
+      console.log(matched, prevMatched)
+      console.log(activated)
   
       if (!activated.length) {
         return next()

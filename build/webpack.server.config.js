@@ -18,11 +18,6 @@ module.exports=merge(baseConfig,{
         allowlist: /\.css$/
     }),
     plugins: [
-        new VueSSRServerPlugin(),
-        new HtmlWebpackPlugin({
-            template: resolve('public/index.ssr.html'),
-            filename: 'index.ssr.html',
-            excludeChunks: ['server']
-        })
+        new VueSSRServerPlugin()
     ]
 })

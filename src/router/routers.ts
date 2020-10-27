@@ -7,6 +7,10 @@ import {RouteConfig} from 'vue-router'
 export const constantRoutes: RouteConfig[] = [
   {
     path: '/',
+    redirect: '/home'
+  },
+  {
+    path: '/home',
     // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
     component: () => import(/* webpackChunkName: "home" */ '@/views/home/index.vue'),
     name: 'Home',
