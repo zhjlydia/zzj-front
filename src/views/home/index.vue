@@ -48,13 +48,9 @@ export default class Home extends Vue {
     return this.$store.state.home && this.$store.state.home.articles;
   }
 
-  @Catch
-  @Loading
   asyncData ({ store, route }) {
-    console.log('asyncData')
     
     store.registerModule('home', home)
-    console.log(this.$store)
     return store.dispatch('home/fetchList')
   }
 

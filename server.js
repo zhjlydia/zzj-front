@@ -7,7 +7,7 @@ const template = fs.readFileSync(resolve('./public/index.ssr.html'), 'utf-8')
 const serverBundle = require(resolve('./dist/vue-ssr-server-bundle.json'))
 const clientManifest = require(resolve('./dist/vue-ssr-client-manifest.json'))
 
-const proxy = require('http-proxy-middleware');//引入代理中间件
+const {createProxyMiddleware} = require('http-proxy-middleware');//引入代理中间件
 
 const renderer = require('vue-server-renderer').createBundleRenderer(serverBundle,{
     runInNewContext: false, // 推荐
@@ -30,8 +30,8 @@ var options = {
   }
 };
 
-var exampleProxy = proxy(options);
-app.use('/api', exampleProxy);
+var exampleProxy = createProxyMiddleware('/api',options);
+app.use(exampleProxy);
 
 // 设置静态资源目录
 app.use(express.static(__dirname + '/dist'))
@@ -42,7 +42,6 @@ app.get("*", async (req, res) => {
           url: req.url,
           title: 'ssr test'
       }
-      console.log(context)
     const html = await renderer.renderToString(context); // 之前接收vue实例，现在接收上下文
     res.end(html);
   } catch (error) {

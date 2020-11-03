@@ -17,7 +17,6 @@ http
   .interceptors
   .response
   .use(res => {
-    console.log(res)
     if (res.status === 204) {
       return res.data
     }
